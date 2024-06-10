@@ -15,6 +15,10 @@ const slides = [
 	{
 		"image": "slide4.png",
 		"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
+	},
+	{
+		"image": "slide5.jpg",
+		"tagLine": "Exemple <span>le slider fonctionne bien</span>"
 	}
 ]
 
@@ -47,7 +51,7 @@ function initSlide() {
 // Fonction initialisation texte slide
 function initSlideText() {
 	let tagLine = slides[i].tagLine
-	let slideText = document.getElementById("slideText")
+	let slideText = document.querySelector("#banner p")
 	slideText.innerHTML = tagLine
 }
 
@@ -81,13 +85,23 @@ function previousSlide () {
 // Event listener clic fleche droite
 let arrowRight = document.getElementById("arrowRight")
 arrowRight.addEventListener("click", () => {
-	nextSlide()
+	if (i == (slides.length - 1)) {
+		i = 0
+		initSlideshow()
+	} else {
+		nextSlide()
+	}
 })
 
 // Event listener clic fleche gauche
 let arrowLeft = document.getElementById("arrowLeft")
 arrowLeft.addEventListener("click", () => {
+	if (i == 0) {
+		i = (slides.length - 1)
+		initSlideshow()
+	} else {
 	previousSlide()
+	}
 })
 
 
